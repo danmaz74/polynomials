@@ -4,6 +4,7 @@ class Polynomial
     @coefficients = coefficients
   end
 
+  # executes the whole process from input string to output differentiated string
   # @param coefficients_string [String] coefficients in the format '3/2/1'
   # @return [String] the differentiated polynomial in the form 2x^2+x+1
   def self.string_to_differentiated_polynomial(coefficients_string)
@@ -40,7 +41,7 @@ class Polynomial
     @coefficients.each do |coefficient|
       new_term = Polynomial.render_term(coefficient, exponent)
 
-      if !new_term.blank?
+      if !new_term.blank? # skip empty terms
         if new_term[0] == '-'
           output += new_term
         else
