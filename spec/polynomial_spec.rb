@@ -1,7 +1,19 @@
 require 'rails_helper'
 
 describe Polynomial do
-  xdescribe '.string_to_differentiated_polynomial'
+  describe '.string_to_differentiated_polynomial' do
+    context 'original spec' do
+      it 'works with all cases' do
+        expect(Polynomial.string_to_differentiated_polynomial('3/2/1')).to eq('6x+2')
+
+        expect(Polynomial.string_to_differentiated_polynomial('4/3/2/1')).to eq('12x^2+6x+2')
+
+        expect(Polynomial.string_to_differentiated_polynomial('4/3/0/1')).to eq('12x^2+6x')
+
+        expect(Polynomial.string_to_differentiated_polynomial('4/-5/0/1')).to eq('12x^2-10x')
+      end
+    end
+  end
 
   describe '.parse_string' do
     let(:coefficients_string) { '1/-2/0/1' }
