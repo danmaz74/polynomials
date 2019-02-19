@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The logic is implemented in the Polynomial class, which is tested using rspec
 
-Things you may want to cover:
+Using Rails is overkill for this simple API, but I chose it because of my familiarity with this framework
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
