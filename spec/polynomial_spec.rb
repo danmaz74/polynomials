@@ -13,7 +13,23 @@ describe Polynomial do
     end
   end
 
-  xdescribe '#differentiate'
+  describe '#differentiate' do
+    context 'simple case' do
+      let(:polynomial) { Polynomial.new([2,3,4]) }
+
+      it 'differentiates correctly' do
+        expect(polynomial.differentiate().coefficients).to eq([4, 3])
+      end
+    end
+
+    context 'complex case' do
+      let(:polynomial) { Polynomial.new([-12,7,0,-4]) }
+
+      it 'differentiates correctly' do
+        expect(polynomial.differentiate().coefficients).to eq([-36, 14, 0])
+      end
+    end
+  end
 
   describe '#to_s' do
     context 'simple case' do

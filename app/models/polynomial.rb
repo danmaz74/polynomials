@@ -20,8 +20,15 @@ class Polynomial
 
   # @return [Polynomial] a new object with the differentiated coefficients
   def differentiate
-    # TODO FAKE
-    return self
+    exponent = @coefficients.size
+
+    new_coefficients = @coefficients[0..-2].map do |coefficient|
+      exponent -= 1
+
+      coefficient * exponent
+    end
+
+    return Polynomial.new(new_coefficients)
   end
 
   # creates a string representation in the form 2x^2+x+1
@@ -51,6 +58,9 @@ class Polynomial
     return output
   end
 
+  # @param coefficient [FixedNum]
+  # @param exponent [FixedNum]
+  # @return [String] a string representation of one term of the polynomial
   def self.render_term(coefficient, exponent)
     return '' if coefficient == 0
 
