@@ -26,7 +26,44 @@ class Polynomial
 
   # creates a string representation in the form 2x^2+x+1
   def to_s
-    # TODO FAKE
-    @coefficients.join('+')
+    output =''
+
+    exponent = @coefficients.size-1
+
+    @coefficients.each do |coefficient|
+      new_term = Polynomial.render_term(coefficient, exponent)
+
+      if !new_term.blank?
+        if new_term[0] == '-'
+          output += new_term
+        else
+          if output.size > 0
+            output += '+'
+          end
+
+          output += new_term
+        end
+      end
+
+      exponent -= 1
+    end
+
+    return output
+  end
+
+  def self.render_term(coefficient, exponent)
+    return '' if coefficient == 0
+
+    coefficient_string = case coefficient
+                           when 1 then ''
+                           when -1 then '-'
+                           else coefficient.to_s
+                         end
+
+    return case exponent
+             when 0 then coefficient.to_s
+             when 1 then "#{coefficient_string}x"
+             else "#{coefficient_string}x^#{exponent}"
+    end
   end
 end
